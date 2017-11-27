@@ -2,6 +2,8 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+
 // Variables
 @import "variables";
 
@@ -10,3 +12,5 @@
 
 // Bootstrap4
 @import "node_modules/bootstrap/scss/bootstrap";
+
+//@import "../css/emoji.css";

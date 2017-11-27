@@ -7,6 +7,12 @@
 
 require('./bootstrap');
 
+// require('./emoji_picker/config.js');
+// require('./emoji_picker/util.js');
+// require('./emoji_picker/jquery.emojiarea.js');
+// require('./emoji_picker/emoji-picker.js');
+
+
 window.Vue = require('vue');
 
 /**
