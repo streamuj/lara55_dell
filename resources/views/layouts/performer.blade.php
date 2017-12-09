@@ -69,7 +69,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">2001Live</a>
+            <a class="navbar-brand" href="#">2001Live Performer Portal</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -87,48 +87,46 @@
 
             </div>
                 @if(Auth::check())
-                    @if($dj == true)
-                        <a class="nav-item nav-link" href="/dj">DJ Area</a>
-                    @endif
+
+                    @guest
+                        <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
+                        @else
 
 
-                    <a class="nav-item nav-link" href="/buyCredits">{{$credits}} Credits</a><
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </button>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Messages</a>
+                                    <a class="dropdown-item" href="#">Friends</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </div>
+
+                            @endguest
+
+{{--                    <a class="nav-item nav-link" href="/buyCredits">{{$credits}} Credits</a><--}}
                     <span class="navbar-text">Premium Member</span>
-                    @if($content)
+                    {{--@if($content)--}}
                         {{--{{$content}}--}}
-                        <a href="/friends" class="nav-item nav-link">Friend Request!</a>
-                    @endif
+                        {{--<a href="/friends" class="nav-item nav-link">Friend Request!</a>--}}
+                    {{--@endif--}}
 
 
                 @endif
-            @guest
-                <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
-                @else
 
-
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </button>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Messages</a>
-                            <a class="dropdown-item" href="#">Friends</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </div>
-                    </div>
-
-                    @endguest
 
         </nav>
 
